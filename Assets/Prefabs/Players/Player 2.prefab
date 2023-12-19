@@ -73,7 +73,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 499
   m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
@@ -83,7 +83,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.07075119
+        value: 0.14381027
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -213,7 +213,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 499
   m_Time: 0.5
   m_Parameters:
     serializedVersion: 3
@@ -223,7 +223,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.07075119
+        value: 0.14381056
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -313,7 +313,7 @@ Transform:
   m_GameObject: {fileID: 4553175617961139401}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1203440660850194725}
@@ -382,7 +382,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 500
   m_Sprite: {fileID: 1343695432, guid: 9f003830abb2e454ab4e00b0e74b93dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -432,8 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2756ade2f6cf5b1478a3397fe96263af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
-  attackRange: 0.335
+  damage: 30
+  attackRange: 0.84
   cooldownTime: 1
   enemyTag: Enemy
   animator: {fileID: 4553175617961139407}
@@ -451,9 +451,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashRange: 0
-  dashSpeed: 1.5
+  dashSpeed: 3.75
   isDash: 0
-  speed: 1.1
+  speed: 2.75
   direction: {x: 0, y: 0}
   faceDir: 0
   isAttack: 0
@@ -493,8 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86b701b273c6e344cb223dae15470ceb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 0.75
-  coinFlySpeed: 2
+  detectionRange: 1.5
+  coinFlySpeed: 5
 --- !u!114 &7796143795708674347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7776783046594989044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -615,7 +615,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 500
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

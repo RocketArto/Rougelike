@@ -449,7 +449,7 @@ Transform:
   m_GameObject: {fileID: 5214327750897664333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 559424099}
@@ -517,7 +517,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 500
   m_Sprite: {fileID: 1855396166, guid: 1cc7efeff241cb845bdd4fcbe8835aca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -572,8 +572,6 @@ MonoBehaviour:
   healthBar: {fileID: 1597043069}
   healthBarSlider: {fileID: 1597043071}
   lootDrop: {fileID: 5599527176213226042, guid: b041c551df685804786e5e9bdea89e37, type: 3}
-  throwForce: 1
-  dampingFactor: 0.97
   lifetime: 0.2
   slowDownTime: 1
 --- !u!114 &2470702206673935625
@@ -592,9 +590,9 @@ MonoBehaviour:
   player: {fileID: 0}
   minDamage: 20
   maxDamage: 50
-  projectileForce: 1
+  projectileForce: 2.5
   cooldown: 1.5
-  detectRange: 1
+  detectRange: 2.5
 --- !u!114 &1069550536567103652
 MonoBehaviour:
   m_ObjectHideFlags: 0

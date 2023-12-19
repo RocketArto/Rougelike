@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 267379026}
   - component: {fileID: 267379028}
   - component: {fileID: 267379027}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 559424102}
   - component: {fileID: 559424101}
   - component: {fileID: 559424100}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 993883744}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1107678539}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597043070}
   - component: {fileID: 1597043071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 2135851898}
   - component: {fileID: 2135851900}
   - component: {fileID: 2135851899}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,8 @@ GameObject:
   - component: {fileID: 4062121792058791015}
   - component: {fileID: 233398015017209779}
   - component: {fileID: 2758009256560048319}
-  m_Layer: 0
+  - component: {fileID: -3768962404369631513}
+  m_Layer: 3
   m_Name: Bat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -451,7 +452,7 @@ Transform:
   m_GameObject: {fileID: 5214327750897664333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 559424099}
@@ -519,7 +520,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 500
   m_Sprite: {fileID: -1865566325, guid: 150f135a9633f3a4b8ec4c3aa85d8733, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -574,8 +575,6 @@ MonoBehaviour:
   healthBar: {fileID: 1597043069}
   healthBarSlider: {fileID: 1597043071}
   lootDrop: {fileID: 5599527176213226042, guid: b041c551df685804786e5e9bdea89e37, type: 3}
-  throwForce: 1
-  dampingFactor: 0.97
   lifetime: 0.2
   slowDownTime: 1
 --- !u!114 &7909129643551378196
@@ -642,11 +641,11 @@ MonoBehaviour:
   animator: {fileID: 5214327750897664329}
   direction: {x: 0, y: 0}
   chaseDirection: {x: 0, y: 0}
-  speed: 0.5
+  speed: 1.25
   runtime: 0.7
   isChasing: 0
-  detectRange: 2
-  chaseRange: 4
+  detectRange: 5
+  chaseRange: 10
   player: {fileID: 0}
 --- !u!61 &2758009256560048319
 BoxCollider2D:
@@ -674,3 +673,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20862366, y: 0.22248603}
   m_EdgeRadius: 0
+--- !u!114 &-3768962404369631513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214327750897664333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afc2549dacf08f44b896599d0e227389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onKnock: 0
+  slowDownTime: 0.2

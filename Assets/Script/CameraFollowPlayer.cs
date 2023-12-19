@@ -12,7 +12,7 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
         if (Instance == null)
         {
             Instance = this;
@@ -23,6 +23,13 @@ public class CameraFollowPlayer : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+
     void FixedUpdate(){
         if (player != null){
             Vector3 newPosition = Vector3.Lerp(transform.position, player.transform.position + offset, smoothing);

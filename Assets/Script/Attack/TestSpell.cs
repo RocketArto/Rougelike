@@ -12,6 +12,7 @@ public class TestSpell : MonoBehaviour
     public float projectileForce;
     public float manaCost;
     public float curMana;
+    public float detectRange;
 
 
     void Update(){
@@ -22,7 +23,7 @@ public class TestSpell : MonoBehaviour
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 myPos = transform.position;
-            GameObject targeted = FindClosestEnemyWithinRange(5);
+            GameObject targeted = FindClosestEnemyWithinRange(detectRange);
             Vector2 newTarLocation = mousePos;
             if (targeted != null) {
                 newTarLocation = targeted.transform.position;

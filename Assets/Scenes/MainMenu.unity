@@ -25009,8 +25009,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 2.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -40033,7 +40033,7 @@ MonoBehaviour:
   version: 3
   EnableDiagnostics: 0
   FixedLevelGraphConfig:
-    LevelGraph: {fileID: 11400000, guid: 977a390298cef8148ac1f362ddb5af14, type: 2}
+    LevelGraph: {fileID: 11400000, guid: e83360f8587f2824c859dbb12125395f, type: 2}
     UseCorridors: 1
   GeneratorConfig:
     RootGameObject: {fileID: 0}

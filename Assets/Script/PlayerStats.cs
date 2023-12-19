@@ -31,7 +31,11 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] GameObject[] playerList;
     public GameObject respawn;
-    public int currentPlayer = 0;
+    public GameObject spawnPoint;
+    public int currentPlayer;
+
+    public string enemyTag = "Enemy";
+    public float knockDamage = 100f;
 
     private void Awake()
     {
@@ -44,6 +48,7 @@ public class PlayerStats : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        //spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
     }
 
     public void FindPlayer(TestEnemyShooting enemy)
@@ -55,6 +60,13 @@ public class PlayerStats : MonoBehaviour
     {
         health = maxHealth;
         StartCoroutine(RecoverMana());
+        p1 = GameObject.FindGameObjectWithTag("Player");
+        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+        currentPlayer = spawnPoint.GetComponent<SpawnPoint>().playerIndex;
+    }
+
+    private void Update()
+    {
         p1 = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -190,11 +202,30 @@ public class PlayerStats : MonoBehaviour
         PlayerInitialized();
     }
 
-    //quan ly player
+    //manage player
     public void PlayerInitialized()
     {
         health = maxHealth;
         mana = maxMana;
+        KnockEnemies(p1.transform.position);
+    }
+
+    public void KnockEnemies(Vector2 center) {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(center, 0.5f);
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            if (enemy.CompareTag(enemyTag))
+            {
+                Vector2 temp = enemy.transform.position;
+                Vector2 knockDirection = temp - center;
+                //using TryGetComponent is more optimal
+                if (enemy.TryGetComponent(out KnockBack knock)) {
+                    knock.Knock(knockDirection);
+                }
+                //enemy.GetComponent<KnockBack>().Knock(knockDirection);
+                enemy.GetComponent<EnemyRecieveDamage>().DealDamage(knockDamage);
+            }
+        }
     }
 
 }

@@ -26,12 +26,19 @@ public class MeleeWeapon : MonoBehaviour
     {
         StartCooldown();
         effect.SetActive(true);
-        Invoke(nameof(DeactivateObject), 0.5f);
+        Invoke(nameof(DeactivateEffect), 0.5f);
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(transform.position, attackRange);
+        Vector2 currPos = gameObject.transform.position;
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.CompareTag(enemyTag))
             {
+                Vector2 temp = enemy.transform.position;
+                Vector2 knockDirection = temp - currPos;
+                if (enemy.TryGetComponent(out KnockBack knock))
+                {
+                    knock.Knock(knockDirection);
+                }
                 enemy.GetComponent<EnemyRecieveDamage>().DealDamage(damage);
             }
         }
@@ -49,7 +56,7 @@ public class MeleeWeapon : MonoBehaviour
         isOnCooldown = false;
     }
 
-    void DeactivateObject()
+    void DeactivateEffect()
     {
         effect.SetActive(false);
     }
