@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public void CloseSettings()
     {
         settingsPanel.SetActive(false);
+        CameraFollowPlayer.Instance.player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public void ExitGame()
@@ -27,4 +28,5 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quitting");
         Application.Quit();
     }
+
 }

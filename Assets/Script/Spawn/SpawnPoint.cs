@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     public int playerIndex;
-    public GameObject player;
+    [SerializeField] GameObject[] playerList;
     public GameObject sEffect;
 
     void Awake()
@@ -14,12 +15,14 @@ public class SpawnPoint : MonoBehaviour
 
     void Start()
     {
+        
         SpawnPlayer();
     }
 
     public void SpawnPlayer()
     {
-        GameObject spawnPlayer = Instantiate(player, transform.position, Quaternion.identity);
+        playerIndex = PlayerPrefs.GetInt("CurrentPlayer");
+        GameObject spawnPlayer = Instantiate(playerList[playerIndex], transform.position, Quaternion.identity);
         CameraFollowPlayer.Instance.player = spawnPlayer.transform;
         PlayerInitialized();
         GameObject spawnEffect = Instantiate(sEffect, gameObject.transform.position, Quaternion.identity);

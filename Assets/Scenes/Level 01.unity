@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 690190811}
   - component: {fileID: 690190810}
   m_Layer: 0
-  m_Name: Fill
+  m_Name: Mana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1601,6 +1601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a768c52a331be614388e70e34a2d761f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
   health: 500
   maxHealth: 500
   mana: 100
@@ -1674,7 +1675,7 @@ GameObject:
   - component: {fileID: 1609652707}
   - component: {fileID: 1609652706}
   m_Layer: 0
-  m_Name: Fill
+  m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

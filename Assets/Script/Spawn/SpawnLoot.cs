@@ -6,6 +6,7 @@ public class SpawnLoot : MonoBehaviour
 {
     [SerializeField] GameObject[] lootList;
     [SerializeField] int maxLootQuantity;
+    //SpawnManagerScriptableObject lootList2;
 
     void Start()
     {

@@ -45,5 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
-  player: {fileID: 4553175617961139401, guid: 535e35034c415404abd65e50f7fca072, type: 3}
+  playerList:
+  - {fileID: 4553175617961139401, guid: 535e35034c415404abd65e50f7fca072, type: 3}
+  - {fileID: 4553175617961139401, guid: 7779e6c62c5508c429c5d9ecfd3d30fb, type: 3}
+  - {fileID: 4553175617961139401, guid: be09167a809d54442be580855a173a14, type: 3}
   sEffect: {fileID: 2790842631546169333, guid: 0645dd2ad7099e94ab3ae938a2f7b302, type: 3}

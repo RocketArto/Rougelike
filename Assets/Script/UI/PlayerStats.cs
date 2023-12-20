@@ -6,11 +6,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Image = UnityEngine.UI.Image;
-//singleton
+
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance;
 
+    public int level;
     public float health;
     public float maxHealth;
     public float mana;
@@ -39,16 +40,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(transform.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        //spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+        Instance = this;
+        level = PlayerPrefs.GetInt("CurrentLevel");
     }
 
     public void FindPlayer(TestEnemyShooting enemy)
@@ -58,6 +51,7 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        
         health = maxHealth;
         StartCoroutine(RecoverMana());
         p1 = GameObject.FindGameObjectWithTag("Player");
@@ -152,14 +146,14 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    //Hoi HP&Mana
+    //Recover Mana
 
     IEnumerator RecoverMana()
     {
         while (true)
         {
             yield return new WaitForSeconds(cooldown);
-            HealCharacter(hpHealSpeed);
+            //HealCharacter(hpHealSpeed);
             HealCharacterMana(manaHealSpeed);
         }
     }

@@ -26,6 +26,7 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private void Start()
     {
+        //player = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

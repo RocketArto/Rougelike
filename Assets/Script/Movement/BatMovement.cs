@@ -27,7 +27,7 @@ public class BatMovement : MonoBehaviour
 
     
 
-    void Update()
+    void FixedUpdate()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (Vector2.Distance(transform.position,player.position) <= detectRange)

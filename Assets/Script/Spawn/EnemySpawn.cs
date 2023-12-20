@@ -7,6 +7,8 @@ public class EnemySpawn : MonoBehaviour
     public int enemyIndex;
     public GameObject enemy;
     public GameObject sEffect;
+    public SpawnManagerScriptableObject spawnList;
+    public int spawnLevel;
 
     void Awake()
     {
@@ -19,8 +21,11 @@ public class EnemySpawn : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        GameObject spawnEnemy = Instantiate(enemy);
-        spawnEnemy.transform.position = transform.position;
+        spawnLevel = PlayerStats.Instance.level;
+        if (spawnLevel + 1 > spawnList.spawnList.Length) {
+            spawnLevel = spawnList.spawnList.Length - 1;
+        }
+        GameObject spawnEnemy = Instantiate(spawnList.spawnList[Random.Range(0, spawnLevel+1)], transform.position, Quaternion.identity);
         //CameraFollowPlayer.Instance.player = spawnPlayer.transform;
         //PlayerInitialized();
         GameObject spawnEffect = Instantiate(sEffect, gameObject.transform.position, Quaternion.identity);
