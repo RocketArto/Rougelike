@@ -537,8 +537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 2255235330414654454, guid: eef039335570aa94293ec33d7e122f11, type: 3}
   minDamage: 10
-  maxDamage: 50
-  projectileForce: 3.5
-  manaCost: 5
+  maxDamage: 30
+  projectileForce: 8.75
+  manaCost: 10
   checkPlayerDir: 0
   boomerangDir: {x: 0, y: 0}
