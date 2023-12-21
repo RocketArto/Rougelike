@@ -5,21 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject settingsPanel;
+    public GameObject choosePlayerPanel;
 
     public void StartGame()
     {
         SceneManager.LoadScene(1);
     }
 
-    public void OpenSettings()
+    public void OpenPlayerPanel()
     {
-        settingsPanel.SetActive(true);
+        choosePlayerPanel.SetActive(true);
     }
 
-    public void CloseSettings()
+    public void ClosePlayerPanel()
     {
-        settingsPanel.SetActive(false);
+        choosePlayerPanel.SetActive(false);
         CameraFollowPlayer.Instance.player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 

@@ -11,11 +11,11 @@ public class SpawnPoint : MonoBehaviour
 
     void Awake()
     {
+        playerIndex = PlayerPrefs.GetInt("CurrentPlayer");
     }
 
     void Start()
     {
-        
         SpawnPlayer();
     }
 

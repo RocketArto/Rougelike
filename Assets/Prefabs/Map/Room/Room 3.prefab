@@ -474,6 +474,39 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!1 &3215204846968973143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1065022232001726026}
+  m_Layer: 0
+  m_Name: MonsterGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1065022232001726026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3215204846968973143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 401840537021225777}
+  - {fileID: 834844683273353614}
+  m_Father: {fileID: 3047046377083871355}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3517749699190179960
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2180,7 @@ GameObject:
   - component: {fileID: 3047046377083871355}
   - component: {fileID: 9143339261537269584}
   - component: {fileID: 622261738043995351}
+  - component: {fileID: 6203990943294271783}
   m_Layer: 0
   m_Name: Room 3
   m_TagString: Untagged
@@ -2167,8 +2201,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1646335151602491481}
-  - {fileID: 401840537021225777}
-  - {fileID: 834844683273353614}
+  - {fileID: 1065022232001726026}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2200,7 +2233,11 @@ MonoBehaviour:
   version: 2
   DistanceFromCorners: 1
   DoorLength: 1
-  DoorsList: []
+  DoorsList:
+  - From: {x: -12, y: 14, z: 0}
+    To: {x: -11, y: 14, z: 0}
+  - From: {x: -16, y: 7, z: 0}
+    To: {x: -15, y: 7, z: 0}
   SelectedMode: 1
   HybridDoorModeData:
     DefaultLength: 1
@@ -2225,12 +2262,34 @@ MonoBehaviour:
       Margin1: 1
       Margin2: 1
       Enabled: 1
+--- !u!68 &6203990943294271783
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9085749949353418809}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1001 &5816371290484165989
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3047046377083871355}
+    m_TransformParent: {fileID: 1065022232001726026}
     m_Modifications:
     - target: {fileID: 6566828866461463784, guid: b2ac8a9bad18a7b49aa400fd1be5fa50, type: 3}
       propertyPath: m_Name
@@ -2238,7 +2297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6566828866461463787, guid: b2ac8a9bad18a7b49aa400fd1be5fa50, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6566828866461463787, guid: b2ac8a9bad18a7b49aa400fd1be5fa50, type: 3}
       propertyPath: m_LocalScale.x
@@ -2308,7 +2367,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3047046377083871355}
+    m_TransformParent: {fileID: 1065022232001726026}
     m_Modifications:
     - target: {fileID: 6566828866461463784, guid: b2ac8a9bad18a7b49aa400fd1be5fa50, type: 3}
       propertyPath: m_Name
@@ -2316,7 +2375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6566828866461463787, guid: b2ac8a9bad18a7b49aa400fd1be5fa50, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6566828866461463787, guid: b2ac8a9bad18a7b49aa400fd1be5fa50, type: 3}
       propertyPath: m_LocalScale.x

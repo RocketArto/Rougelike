@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats Instance;
 
     public int level;
+    public int lives;
     public float health;
     public float maxHealth;
     public float mana;
@@ -38,10 +39,13 @@ public class PlayerStats : MonoBehaviour
     public string enemyTag = "Enemy";
     public float knockDamage = 100f;
 
+    [SerializeField] Image[] avatarList;
+
     private void Awake()
     {
         Instance = this;
         level = PlayerPrefs.GetInt("CurrentLevel");
+        lives = 1;
     }
 
     public void FindPlayer(TestEnemyShooting enemy)
@@ -51,12 +55,12 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        
         health = maxHealth;
         StartCoroutine(RecoverMana());
         p1 = GameObject.FindGameObjectWithTag("Player");
         spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
         currentPlayer = spawnPoint.GetComponent<SpawnPoint>().playerIndex;
+        SetAvatar();
     }
 
     private void Update()
@@ -187,6 +191,7 @@ public class PlayerStats : MonoBehaviour
     public void ChangePlayer()
     {
         currentPlayer = (currentPlayer + 1) % (playerList.Length);
+        Debug.Log(currentPlayer);
         Vector2 currLocation = p1.transform.position;
         Destroy(p1);
         GameObject spawnEffect = Instantiate(respawn, currLocation, Quaternion.identity);
@@ -202,6 +207,7 @@ public class PlayerStats : MonoBehaviour
         health = maxHealth;
         mana = maxMana;
         KnockEnemies(p1.transform.position);
+        SetAvatar();
     }
 
     public void KnockEnemies(Vector2 center) {
@@ -220,6 +226,15 @@ public class PlayerStats : MonoBehaviour
                 enemy.GetComponent<EnemyRecieveDamage>().DealDamage(knockDamage);
             }
         }
+    }
+
+    public void SetAvatar()
+    {
+        foreach (Image avatar in avatarList)
+        {
+            avatar.gameObject.SetActive(false);
+        }
+        avatarList[currentPlayer].gameObject.SetActive(true);
     }
 
 }

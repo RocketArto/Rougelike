@@ -137,7 +137,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.3254717, g: 0.8087185, b: 1, a: 1}
+      key0: {r: 0.8554072, g: 0.45834818, b: 0.9433962, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -277,7 +277,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.3254717, g: 0.8087185, b: 1, a: 1}
+      key0: {r: 0.67945695, g: 0.4672481, b: 0.7924528, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -363,7 +363,7 @@ Animator:
   m_GameObject: {fileID: 4553175617961139401}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4fda07c6d8d33804b954bdd76de579eb, type: 2}
+  m_Controller: {fileID: 9100000, guid: fd20e7094af7f9141baa2a4bedc4a1cf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -415,7 +415,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: -1492351125, guid: 686c3b9baf05e2c4e839020afeb7c60a, type: 3}
+  m_Sprite: {fileID: 1257237589, guid: 02f08585217f0ef4686765c2b9cb9810, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -465,9 +465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashRange: 0
-  dashSpeed: 2.5
+  dashSpeed: 3.5
   isDash: 0
-  speed: 2
+  speed: 2.3
   direction: {x: 0, y: 0}
   faceDir: 0
   isAttack: 0

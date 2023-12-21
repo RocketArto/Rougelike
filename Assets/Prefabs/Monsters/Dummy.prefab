@@ -135,7 +135,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 500
   m_TargetDisplay: 0
 --- !u!114 &559424101
 MonoBehaviour:
@@ -565,8 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50eafc40f748db64d877cd545a57e879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDamage: 50
-  maxDamage: 100
+  minDamage: 1
+  maxDamage: 2
 --- !u!50 &7433674778938126733
 Rigidbody2D:
   serializedVersion: 4
@@ -575,7 +575,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5214327750897664333}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
