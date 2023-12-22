@@ -10,6 +10,7 @@ public class IngameUI : MonoBehaviour
 {
     public TextMeshProUGUI livesText;
     [SerializeField] Image[] avatarList;
+
     void Start()
     {
         livesText.text = "Lives: " + PlayerStats.Instance.lives;

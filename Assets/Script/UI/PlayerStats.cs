@@ -5,7 +5,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -39,13 +41,15 @@ public class PlayerStats : MonoBehaviour
     public string enemyTag = "Enemy";
     public float knockDamage = 100f;
 
+    public TextMeshProUGUI livesText;
+
     [SerializeField] Image[] avatarList;
 
     private void Awake()
     {
         Instance = this;
         level = PlayerPrefs.GetInt("CurrentLevel");
-        lives = 1;
+        lives = 2;
     }
 
     public void FindPlayer(TestEnemyShooting enemy)
@@ -99,7 +103,12 @@ public class PlayerStats : MonoBehaviour
     {
         if (health <= 0)
         {
-            //player.gameObject.SetActive(false);
+            lives -= 1;
+            if (lives <= 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+            livesText.text = "Lives: " + PlayerStats.Instance.lives;
             ChangePlayer();
         }
     }

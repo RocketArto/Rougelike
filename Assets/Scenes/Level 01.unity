@@ -2166,6 +2166,7 @@ MonoBehaviour:
   currentPlayer: 0
   enemyTag: Enemy
   knockDamage: 10
+  livesText: {fileID: 531840823}
   avatarList:
   - {fileID: 805409871}
   - {fileID: 1043822629}
