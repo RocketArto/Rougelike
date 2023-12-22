@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 2758009256560048319}
   - component: {fileID: -3768962404369631513}
   m_Layer: 3
-  m_Name: Bat
+  m_Name: Bomber
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -469,7 +469,7 @@ Animator:
   m_GameObject: {fileID: 5214327750897664333}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: acb8da3e937c0d940b274defe96ed940, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8b42127dd2d238b48b8773067d073bd9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -520,7 +520,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: -1865566325, guid: 150f135a9633f3a4b8ec4c3aa85d8733, type: 3}
+  m_Sprite: {fileID: 1198909223, guid: dea1c88c687ff67458c31697bbf57516, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -547,8 +547,8 @@ BoxCollider2D:
   m_Offset: {x: -0.01290255, y: 0.024343096}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.27272728, y: 0.29090908}
+    pivot: {x: 0.5, y: 0.4}
+    oldSize: {x: 0.28, y: 0.26}
     newSize: {x: 0.14, y: 0.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -662,8 +662,8 @@ BoxCollider2D:
   m_Offset: {x: -0.01290255, y: 0.024343096}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.27272728, y: 0.29090908}
+    pivot: {x: 0.5, y: 0.4}
+    oldSize: {x: 0.28, y: 0.26}
     newSize: {x: 0.14, y: 0.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

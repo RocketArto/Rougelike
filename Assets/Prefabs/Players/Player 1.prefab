@@ -355,7 +355,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4553175617961139407
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -372,8 +372,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &4553175617961139406
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -492,7 +491,7 @@ MonoBehaviour:
   projectileForce: 6
   manaCost: 4
   curMana: 0
-  detectRange: 10
+  detectRange: 15
 --- !u!114 &2736533054800956504
 MonoBehaviour:
   m_ObjectHideFlags: 0
