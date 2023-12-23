@@ -433,9 +433,9 @@ GameObject:
   - component: {fileID: 7909129643551378196}
   - component: {fileID: 7433674778938126733}
   - component: {fileID: 4062121792058791015}
-  - component: {fileID: 233398015017209779}
   - component: {fileID: 2758009256560048319}
   - component: {fileID: -3768962404369631513}
+  - component: {fileID: 1474437427868372210}
   m_Layer: 3
   m_Name: Bomber
   m_TagString: Enemy
@@ -625,27 +625,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashMaterial: {fileID: 2100000, guid: 2614601e4ffc45d439c942cebf6fafc6, type: 2}
   duration: 0.2
---- !u!114 &233398015017209779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5214327750897664333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af35f6eca64d4a4b8bd8343a5f5a582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5214327750897664329}
-  direction: {x: 0, y: 0}
-  chaseDirection: {x: 0, y: 0}
-  speed: 1.25
-  runtime: 0.7
-  isChasing: 0
-  detectRange: 3.5
-  chaseRange: 5
-  player: {fileID: 0}
 --- !u!61 &2758009256560048319
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -686,3 +665,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onKnock: 0
   slowDownTime: 0.2
+--- !u!114 &1474437427868372210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214327750897664333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e60f9bade37d624cafb5ddb7a7d054f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5214327750897664329}
+  direction: {x: 0, y: 0}
+  chaseDirection: {x: 0, y: 0}
+  speed: 0.75
+  runtime: 0.7
+  isChasing: 0
+  detectRange: 2.5
+  chaseRange: 4
+  explodeRange: 0.7
+  eEffect: {fileID: 208735075878461026, guid: db92a0bd86608de40b37e2c945bb4b59, type: 3}
+  player: {fileID: 0}
