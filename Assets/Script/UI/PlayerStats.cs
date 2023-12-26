@@ -49,7 +49,7 @@ public class PlayerStats : MonoBehaviour
     {
         Instance = this;
         level = PlayerPrefs.GetInt("CurrentLevel");
-        lives = 2;
+        lives = 1;
     }
 
     public void FindPlayer(TestEnemyShooting enemy)
@@ -106,7 +106,7 @@ public class PlayerStats : MonoBehaviour
             lives -= 1;
             if (lives <= 0)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadSceneAsync(0);
             }
             livesText.text = "Lives: " + PlayerStats.Instance.lives;
             ChangePlayer();

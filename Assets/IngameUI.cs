@@ -26,7 +26,7 @@ public class IngameUI : MonoBehaviour
     }
     public void ReturnToMainhome()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadSceneAsync(0);
     }
 
 
