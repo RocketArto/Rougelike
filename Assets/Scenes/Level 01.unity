@@ -1372,7 +1372,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 65, y: 65}
+  m_SizeDelta: {x: 68, y: 68}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &805409871
 MonoBehaviour:
@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1387054706, guid: bb4c631705aef98438901f4a32f6a2bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1382eddc45be394285ad50c382bc67a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1735,8 +1735,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 1.2}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1043822629
 MonoBehaviour:
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1343695432, guid: 9f003830abb2e454ab4e00b0e74b93dc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b841bbd1ccb91e40a316e80edef8874, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2210,8 +2210,8 @@ MonoBehaviour:
   gem: 0
   iframe: 0
   playerList:
-  - {fileID: 4553175617961139401, guid: 535e35034c415404abd65e50f7fca072, type: 3}
   - {fileID: 4553175617961139401, guid: 7779e6c62c5508c429c5d9ecfd3d30fb, type: 3}
+  - {fileID: 4553175617961139401, guid: 535e35034c415404abd65e50f7fca072, type: 3}
   - {fileID: 4553175617961139401, guid: be09167a809d54442be580855a173a14, type: 3}
   respawn: {fileID: 2790842631546169333, guid: 0645dd2ad7099e94ab3ae938a2f7b302, type: 3}
   spawnPoint: {fileID: 0}

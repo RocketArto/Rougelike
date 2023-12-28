@@ -194,8 +194,6 @@ public class PlayerStats : MonoBehaviour
         mana = maxMana;
         KnockEnemies(p1.transform.position);
         SetAvatar();
-        StartCoroutine(IsIframe(0.3f));
-        p1.GetComponent<FlashEffect>().Flash();
     }
 
     public void KnockEnemies(Vector2 center) {
