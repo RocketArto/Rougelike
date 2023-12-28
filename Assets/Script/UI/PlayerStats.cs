@@ -171,30 +171,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    //Iframe management
-    IEnumerator IsIframe(float iframeTime)
-    {
-        if (iframe == false)
-        {
-            iframe = true;
-            p1.GetComponent<FlashEffect>().Flash();
-            yield return new WaitForSeconds(iframeTime);
-            iframe = false;
-        }
-        yield return new WaitForSeconds(iframeTime);
-    }
-
-    IEnumerator Flashing()
-    {
-        while (true)
-        {
-
-            if (iframe == true)
-            {
-                yield return new WaitForSeconds(player.GetComponent<FlashEffect>().duration);
-            }
-        }
-    }
+    
 
     //change player
     public void ChangePlayer()
@@ -217,6 +194,8 @@ public class PlayerStats : MonoBehaviour
         mana = maxMana;
         KnockEnemies(p1.transform.position);
         SetAvatar();
+        StartCoroutine(IsIframe(0.3f));
+        p1.GetComponent<FlashEffect>().Flash();
     }
 
     public void KnockEnemies(Vector2 center) {
@@ -244,6 +223,32 @@ public class PlayerStats : MonoBehaviour
             avatar.gameObject.SetActive(false);
         }
         avatarList[currentPlayer].gameObject.SetActive(true);
+    }
+
+
+    //Iframe management
+    IEnumerator IsIframe(float iframeTime)
+    {
+        if (iframe == false)
+        {
+            iframe = true;
+            p1.GetComponent<FlashEffect>().Flash();
+            yield return new WaitForSeconds(iframeTime);
+            iframe = false;
+        }
+        yield return new WaitForSeconds(iframeTime);
+    }
+
+    IEnumerator Flashing()
+    {
+        while (true)
+        {
+
+            if (iframe == true)
+            {
+                yield return new WaitForSeconds(player.GetComponent<FlashEffect>().duration);
+            }
+        }
     }
 
 }
