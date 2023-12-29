@@ -33,7 +33,9 @@ public class PlayerStats : MonoBehaviour
     public int gem;
     public bool iframe = false;
 
-    [SerializeField] GameObject[] playerList;
+    //PlayerList
+    public SpawnManagerScriptableObject spawnList;
+
     public GameObject respawn;
     public GameObject spawnPoint;
     public int currentPlayer;
@@ -176,12 +178,12 @@ public class PlayerStats : MonoBehaviour
     //change player
     public void ChangePlayer()
     {
-        currentPlayer = (currentPlayer + 1) % (playerList.Length);
+        currentPlayer = (currentPlayer + 1) % (spawnList.spawnList.Length);
         Debug.Log(currentPlayer);
         Vector2 currLocation = p1.transform.position;
         Destroy(p1);
         GameObject spawnEffect = Instantiate(respawn, currLocation, Quaternion.identity);
-        GameObject spawnPlayer = Instantiate(playerList[currentPlayer], currLocation, Quaternion.identity);
+        GameObject spawnPlayer = Instantiate(spawnList.spawnList[currentPlayer], currLocation, Quaternion.identity);
         p1 = spawnPlayer;
         CameraFollowPlayer.Instance.player = p1.transform;
         PlayerInitialized();

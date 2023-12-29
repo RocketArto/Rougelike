@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnPoint : MonoBehaviour
 {
     public int playerIndex;
-    [SerializeField] GameObject[] playerList;
+    public SpawnManagerScriptableObject spawnList;
     public GameObject sEffect;
 
     void Awake()
@@ -22,7 +22,7 @@ public class SpawnPoint : MonoBehaviour
     public void SpawnPlayer()
     {
         playerIndex = PlayerPrefs.GetInt("CurrentPlayer");
-        GameObject spawnPlayer = Instantiate(playerList[playerIndex], transform.position, Quaternion.identity);
+        GameObject spawnPlayer = Instantiate(spawnList.spawnList[playerIndex], transform.position, Quaternion.identity);
         CameraFollowPlayer.Instance.player = spawnPlayer.transform;
         PlayerInitialized();
         GameObject spawnEffect = Instantiate(sEffect, gameObject.transform.position, Quaternion.identity);

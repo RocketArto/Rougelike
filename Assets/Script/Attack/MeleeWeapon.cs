@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MeleeWeapon : MonoBehaviour
 {
-    public int damage = 10;
-    public float attackRange = 1f;
-    public float cooldownTime = 0.7f;
+    public int damage;
+    public float attackRange;
+    public float cooldownTime;
     public string enemyTag = "Enemy"; // using enemy tag
     private bool isOnCooldown = false;
     public Animator animator;
