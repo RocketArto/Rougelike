@@ -26,7 +26,9 @@ public class EndGamePortal : MonoBehaviour
     private void EndGame()
     {
         currentLevel = PlayerPrefs.GetInt("CurrentLevel") + 1;
+        PlayerPrefs.SetInt("lives", PlayerStats.Instance.lives);
         PlayerPrefs.SetInt("CurrentLevel", currentLevel);
-        SceneManager.LoadScene(0);
+        PlayerPrefs.SetInt("CurrentPlayer", PlayerStats.Instance.currentPlayer);
+        SceneManager.LoadSceneAsync(0);
     }
 }

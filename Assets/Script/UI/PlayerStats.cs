@@ -8,13 +8,18 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
 using TMPro;
+using DamageNumbersPro;
 
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance;
 
+    public DamageNumber numberPrefab;
     public int level;
     public int lives;
+    public TextMeshProUGUI livesText;
+    public TextMeshProUGUI levelText;
+
     public float health;
     public float maxHealth;
     public float mana;
@@ -43,7 +48,7 @@ public class PlayerStats : MonoBehaviour
     public string enemyTag = "Enemy";
     public float knockDamage = 100f;
 
-    public TextMeshProUGUI livesText;
+    
 
     [SerializeField] Image[] avatarList;
 
@@ -51,7 +56,10 @@ public class PlayerStats : MonoBehaviour
     {
         Instance = this;
         level = PlayerPrefs.GetInt("CurrentLevel");
-        lives = 1;
+        lives = PlayerPrefs.GetInt("lives");
+        if (lives == 0) {
+            lives = 1;
+        }
     }
 
     public void FindPlayer(TestEnemyShooting enemy)
@@ -67,6 +75,7 @@ public class PlayerStats : MonoBehaviour
         spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
         currentPlayer = spawnPoint.GetComponent<SpawnPoint>().playerIndex;
         SetAvatar();
+        levelText.text = "Floor: " + level;
     }
 
     private void Update()
@@ -79,6 +88,9 @@ public class PlayerStats : MonoBehaviour
     public void DealDamage(float damage)
     {
         health -= damage;
+        Vector2 offsetDamPos = new Vector2(0,0.3f); 
+        Vector2 currentPos = p1.transform.position;
+        DamageNumber damageNumber = numberPrefab.Spawn(currentPos+offsetDamPos, damage);
         CheckDeath();
         healthBarSlider.fillAmount = CaculateHealthPercentage();
         StartCoroutine(IsIframe(0.3f));

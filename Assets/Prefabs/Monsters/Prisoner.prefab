@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6272f3b5b6e5ba248aa497a12b6b4f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberPrefab: {fileID: 3851521337093602795, guid: 9d106fabaff8c0d43bbee25f4bd78107, type: 3}
   health: 100
   maxHealth: 100
   healthBar: {fileID: 1597043069, guid: 146c0a6131c5cd04f9ede4ffed1334cd, type: 3}

@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 8982286229106390386}
   - component: {fileID: 6859721181457207241}
   - component: {fileID: 7613913575231074934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player 3
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -537,8 +537,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 2255235330414654454, guid: eef039335570aa94293ec33d7e122f11, type: 3}
   minDamage: 10
-  maxDamage: 30
+  maxDamage: 40
   projectileForce: 8.75
-  manaCost: 10
+  manaCost: 11
   checkPlayerDir: 0
   boomerangDir: {x: 0, y: 0}

@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 2096001102}
   - component: {fileID: 7399890212928521406}
   - component: {fileID: 7796143795708674347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2756ade2f6cf5b1478a3397fe96263af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 50
   attackRange: 0.84
   cooldownTime: 1
   enemyTag: Enemy

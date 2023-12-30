@@ -428,14 +428,13 @@ GameObject:
   - component: {fileID: 5214327750897664328}
   - component: {fileID: 5214327750897664329}
   - component: {fileID: 5214327750897664334}
-  - component: {fileID: 5214327750897664335}
   - component: {fileID: 5214327750897664331}
   - component: {fileID: 7909129643551378196}
   - component: {fileID: 7433674778938126733}
   - component: {fileID: 4062121792058791015}
   - component: {fileID: 233398015017209779}
-  - component: {fileID: 2758009256560048319}
   - component: {fileID: -3768962404369631513}
+  - component: {fileID: 5387775152326616618}
   m_Layer: 3
   m_Name: Bat
   m_TagString: Enemy
@@ -461,7 +460,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5214327750897664329
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -478,7 +477,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!212 &5214327750897664334
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -531,32 +531,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5214327750897664335
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5214327750897664333}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.01290255, y: 0.024343096}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.27272728, y: 0.29090908}
-    newSize: {x: 0.14, y: 0.21}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.20862366, y: 0.22248603}
-  m_EdgeRadius: 0
 --- !u!114 &5214327750897664331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,8 +543,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6272f3b5b6e5ba248aa497a12b6b4f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  numberPrefab: {fileID: 3851521337093602795, guid: 9d106fabaff8c0d43bbee25f4bd78107, type: 3}
+  health: 110
+  maxHealth: 110
   healthBar: {fileID: 1597043069}
   healthBarSlider: {fileID: 1597043071}
   lootDrop: {fileID: 5599527176213226042, guid: b041c551df685804786e5e9bdea89e37, type: 3}
@@ -590,6 +565,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDamage: 50
   maxDamage: 100
+  attackRange: 0.55
+  Player:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &7433674778938126733
 Rigidbody2D:
   serializedVersion: 4
@@ -646,32 +625,6 @@ MonoBehaviour:
   detectRange: 3.5
   chaseRange: 5
   player: {fileID: 0}
---- !u!61 &2758009256560048319
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5214327750897664333}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.01290255, y: 0.024343096}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.27272728, y: 0.29090908}
-    newSize: {x: 0.14, y: 0.21}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.20862366, y: 0.22248603}
-  m_EdgeRadius: 0
 --- !u!114 &-3768962404369631513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -686,3 +639,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onKnock: 0
   slowDownTime: 0.2
+--- !u!58 &5387775152326616618
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214327750897664333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.07

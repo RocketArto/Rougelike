@@ -429,7 +429,6 @@ GameObject:
   - component: {fileID: 5214327750897664334}
   - component: {fileID: 5214327750897664335}
   - component: {fileID: 5214327750897664331}
-  - component: {fileID: 7909129643551378196}
   - component: {fileID: 7433674778938126733}
   - component: {fileID: 4062121792058791015}
   - component: {fileID: 2758009256560048319}
@@ -546,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6272f3b5b6e5ba248aa497a12b6b4f02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberPrefab: {fileID: 3851521337093602795, guid: 9d106fabaff8c0d43bbee25f4bd78107, type: 3}
   health: 100000
   maxHealth: 100000
   healthBar: {fileID: 1597043069}
@@ -553,20 +553,6 @@ MonoBehaviour:
   lootDrop: {fileID: 5599527176213226042, guid: b041c551df685804786e5e9bdea89e37, type: 3}
   lifetime: 0.2
   slowDownTime: 1
---- !u!114 &7909129643551378196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5214327750897664333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50eafc40f748db64d877cd545a57e879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minDamage: 1
-  maxDamage: 2
 --- !u!50 &7433674778938126733
 Rigidbody2D:
   serializedVersion: 4

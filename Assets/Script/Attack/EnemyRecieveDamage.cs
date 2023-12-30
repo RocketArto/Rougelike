@@ -1,3 +1,4 @@
+using DamageNumbersPro;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyRecieveDamage : MonoBehaviour
 {
+    public DamageNumber numberPrefab;
     public float health;
     public float maxHealth;
 
@@ -31,6 +33,9 @@ public class EnemyRecieveDamage : MonoBehaviour
     {
         healthBar.SetActive(true);
         health -= damage;
+        Vector2 offsetDamPos = new Vector2(0, 0.3f);
+        Vector2 currentPos = transform.position;
+        DamageNumber damageNumber = numberPrefab.Spawn(currentPos + offsetDamPos, damage);
         CheckDeath();
         gameObject.GetComponent<FlashEffect>().Flash();
         healthBarSlider.value = CaculateHealthPercentage();

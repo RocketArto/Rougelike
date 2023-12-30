@@ -12,21 +12,23 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         //player = GameObject.FindGameObjectWithTag("Player").transform;
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(transform.gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //    DontDestroyOnLoad(transform.gameObject);
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 
     private void Start()
     {
         //player = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
+        //StartCoroutine(Wait());
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -35,6 +37,14 @@ public class CameraFollowPlayer : MonoBehaviour
         if (player != null){
             Vector3 newPosition = Vector3.Lerp(transform.position, player.transform.position + offset, smoothing);
             transform.position = newPosition;
-        }
+        } 
+        //else
+        //{
+            //player = GameObject.FindGameObjectWithTag("Player").transform;
+        //}
+    }
+
+    IEnumerator Wait() { 
+        yield return new WaitForSeconds(0.5f);
     }
 }
