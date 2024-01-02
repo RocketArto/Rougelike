@@ -1,14 +1,20 @@
 using Edgar.Unity.Examples;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CitizenInteract : MonoBehaviour
 {
     public bool interactable = false;
+    public GameObject player;
+    public float detectRange;
+    public GameObject textMesh;
 
     private void Update()
     {
+        player = PlayerStats.Instance.p1;
+        isFocus();
         TakeInput();
     }
 
@@ -30,21 +36,35 @@ public class CitizenInteract : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+    private void isFocus() {
+        if (Vector2.Distance(player.transform.position, gameObject.transform.position) <= detectRange)
         {
             interactable = true;
+            textMesh.SetActive(true);
+
         }
+        else {
+            interactable = false;
+            textMesh.SetActive(false);
+        }
+
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player") == false)
-        {
-            interactable = false;
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player"))
+    //    {
+    //        interactable = true;
+    //    }
+    //}
+
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("Player") == false)
+    //    {
+    //        interactable = false;
+    //    }
+    //}
 
     void PauseGame()
     {

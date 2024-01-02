@@ -453,13 +453,15 @@ MonoBehaviour:
   dashRange: 0
   dashSpeed: 3.75
   isDash: 0
-  speed: 2.75
+  canDash: 0
+  speed: 3.2
   direction: {x: 0, y: 0}
   faceDir: 0
   isAttack: 0
   trail: {fileID: 7776783046594989044}
   face: 0
   fadeDuration: 0.5
+  dashCost: 25
 --- !u!50 &2096001102
 Rigidbody2D:
   serializedVersion: 4

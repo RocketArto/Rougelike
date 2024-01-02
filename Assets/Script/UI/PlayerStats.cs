@@ -9,12 +9,15 @@ using UnityEngine.SceneManagement;
 using Image = UnityEngine.UI.Image;
 using TMPro;
 using DamageNumbersPro;
+using System.Timers;
 
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats Instance;
 
+    public DamageNumber healNumberPrefab;
     public DamageNumber numberPrefab;
+    
     public int level;
     public int lives;
     public TextMeshProUGUI livesText;
@@ -33,6 +36,9 @@ public class PlayerStats : MonoBehaviour
 
     public Image healthBarSlider;
     public Image manaBarSlider;
+
+    public Image[] skillSlider;
+    public bool isRecharge;
 
     public int coin;
     public int gem;
@@ -76,11 +82,46 @@ public class PlayerStats : MonoBehaviour
         currentPlayer = spawnPoint.GetComponent<SpawnPoint>().playerIndex;
         SetAvatar();
         levelText.text = "Floor: " + level;
+        skillSlider[0].fillAmount = 0;
+        skillSlider[1].fillAmount = 0;
+        skillSlider[2].fillAmount = 0;
     }
 
     private void Update()
     {
         p1 = GameObject.FindGameObjectWithTag("Player");
+        TakeInput();
+    }
+
+    public void TakeInput()
+    {
+        if ( Input.GetKeyDown("1") && isRecharge == false)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                skillSlider[i].fillAmount = 1;
+                isRecharge = true;
+                StartCoroutine(SkillRecharge());
+            }
+        }
+        else if (Input.GetKeyDown("2") && isRecharge == false)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                skillSlider[i].fillAmount = 1;
+                isRecharge = true;
+                StartCoroutine(SkillRecharge());
+            }
+        }
+        else if (Input.GetKeyDown("3") && isRecharge == false)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                skillSlider[i].fillAmount = 1;
+                isRecharge = true;
+                StartCoroutine(SkillRecharge());
+            }
+        }
     }
 
 
@@ -100,6 +141,9 @@ public class PlayerStats : MonoBehaviour
     public void HealCharacter(float heal)
     {
         health += heal;
+        Vector2 offsetDamPos = new Vector2(0, 0.3f);
+        Vector2 currentPos = p1.transform.position;
+        DamageNumber healNumber = healNumberPrefab.Spawn(currentPos + offsetDamPos, heal);
         CheckOverheal();
         healthBarSlider.fillAmount = CaculateHealthPercentage();
     }
@@ -126,12 +170,6 @@ public class PlayerStats : MonoBehaviour
             ChangePlayer();
         }
     }
-
-    private float CaculateHealthPercentage()
-    {
-        return (health / maxHealth);
-    }
-
 
     //Quan ly Mana
 
@@ -167,10 +205,7 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    private float CaculateManaPercentage()
-    {
-        return (mana / maxMana);
-    }
+    
 
 
     //Recover Mana
@@ -205,6 +240,7 @@ public class PlayerStats : MonoBehaviour
     public void PlayerInitialized()
     {
         health = maxHealth;
+        healthBarSlider.fillAmount = CaculateHealthPercentage();
         mana = maxMana;
         KnockEnemies(p1.transform.position);
         SetAvatar();
@@ -261,6 +297,35 @@ public class PlayerStats : MonoBehaviour
                 yield return new WaitForSeconds(player.GetComponent<FlashEffect>().duration);
             }
         }
+    }
+
+    IEnumerator SkillRecharge()
+    {
+        float elapsedTime = 0;
+        float rechargeTime = 10f;
+        while (elapsedTime <= rechargeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            skillSlider[0].fillAmount = (1f - elapsedTime / rechargeTime);
+            skillSlider[1].fillAmount = (1f - elapsedTime / rechargeTime);
+            skillSlider[2].fillAmount = (1f - elapsedTime / rechargeTime);
+            yield return null;
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            skillSlider[i].fillAmount = 0;
+        }
+        isRecharge = false;
+    }
+
+    private float CaculateManaPercentage()
+    {
+        return (mana / maxMana);
+    }
+
+    private float CaculateHealthPercentage()
+    {
+        return (health / maxHealth);
     }
 
 }
