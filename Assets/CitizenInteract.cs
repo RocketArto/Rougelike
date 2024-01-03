@@ -10,6 +10,7 @@ public class CitizenInteract : MonoBehaviour
     public GameObject player;
     public float detectRange;
     public GameObject textMesh;
+    public GameObject sEffect;
 
     private void Update()
     {
@@ -31,6 +32,7 @@ public class CitizenInteract : MonoBehaviour
                 PlayerStats.Instance.livesText.text = "Lives: " + PlayerStats.Instance.lives;
                 PlayerStats.Instance.p1.transform.position = gameObject.transform.position;
                 PlayerStats.Instance.ChangePlayer();
+                GameObject spawnEffect = Instantiate(sEffect, gameObject.transform.position, Quaternion.identity);
                 gameObject.SetActive(false);
             }
         }

@@ -22,17 +22,8 @@ public class SpawnPoint2 : MonoBehaviour
     {
         playerIndex = PlayerPrefs.GetInt("CurrentPlayer");
         GameObject spawnPlayer = Instantiate(spawnList.spawnList[playerIndex], transform.position, Quaternion.identity);
-        CameraFollowPlayer.Instance.player = spawnPlayer.transform;
-        PlayerInitialized();
         GameObject spawnEffect = Instantiate(sEffect, gameObject.transform.position, Quaternion.identity);
-        CameraFollowPlayer.Instance.player = spawnPlayer.transform;
-    }
-
-    public void PlayerInitialized()
-    {
-        PlayerStats.Instance.health = PlayerStats.Instance.maxHealth;
-        PlayerStats.Instance.mana = PlayerStats.Instance.maxMana;
-        //KnockEnemies(p1.transform.position);
+        //CameraFollowPlayer.Instance.player = spawnPlayer.transform;
     }
 
 

@@ -4641,6 +4641,8 @@ MonoBehaviour:
   lives: 0
   livesText: {fileID: 531840823}
   levelText: {fileID: 1060047630}
+  goldText: {fileID: 2135708858}
+  gemText: {fileID: 1897391457}
   health: 500
   maxHealth: 500
   mana: 100
@@ -4661,7 +4663,7 @@ MonoBehaviour:
   gem: 0
   iframe: 0
   spawnList: {fileID: 11400000, guid: 01dfc5a4c520efa44b14deb7b48193e3, type: 2}
-  respawn: {fileID: 2790842631546169333, guid: 1e7520f50a4424140885d06ba62d6c72, type: 3}
+  respawn: {fileID: 2790842631546169333, guid: 0645dd2ad7099e94ab3ae938a2f7b302, type: 3}
   spawnPoint: {fileID: 0}
   currentPlayer: 0
   enemyTag: Enemy
@@ -6338,6 +6340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit

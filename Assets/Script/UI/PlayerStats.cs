@@ -10,6 +10,7 @@ using Image = UnityEngine.UI.Image;
 using TMPro;
 using DamageNumbersPro;
 using System.Timers;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class PlayerStats : MonoBehaviour
     public int lives;
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI levelText;
+    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI gemText;
 
     public float health;
     public float maxHealth;
@@ -63,7 +66,8 @@ public class PlayerStats : MonoBehaviour
         Instance = this;
         level = PlayerPrefs.GetInt("CurrentLevel");
         lives = PlayerPrefs.GetInt("lives");
-        if (lives == 0) {
+        if (lives == 0)
+        {
             lives = 1;
         }
     }
@@ -75,16 +79,32 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        health = maxHealth;
-        StartCoroutine(RecoverMana());
-        p1 = GameObject.FindGameObjectWithTag("Player");
-        spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
-        currentPlayer = spawnPoint.GetComponent<SpawnPoint>().playerIndex;
-        SetAvatar();
-        levelText.text = "Floor: " + level;
+        levelText.text = "Floor: " + (level + 1);
+        goldText.text = "" + PlayerPrefs.GetInt("goldValue");
+        gemText.text = "" + PlayerPrefs.GetInt("gemValue");
         skillSlider[0].fillAmount = 0;
         skillSlider[1].fillAmount = 0;
         skillSlider[2].fillAmount = 0;
+        health = maxHealth;
+        StartCoroutine(RecoverMana());
+        
+        if (GameObject.FindGameObjectWithTag("Player") != null) {
+            p1 = GameObject.FindGameObjectWithTag("Player");
+        }
+        //p1 = GameObject.FindGameObjectWithTag("Player");
+        if (GameObject.FindGameObjectWithTag("SpawnPoint") != null) {
+            spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+        }
+        //spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint");
+        
+        //TryGet is more optimal
+        if (spawnPoint.TryGetComponent(out SpawnPoint sPoint))
+        {
+            currentPlayer = spawnPoint.GetComponent<SpawnPoint>().playerIndex;
+        }
+        //currentPlayer = spawnPoint.GetComponent<SpawnPoint>().playerIndex;
+        SetAvatar();
+
     }
 
     private void Update()

@@ -29,7 +29,11 @@ public class CameraFollowPlayer : MonoBehaviour
     {
         //player = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
         //StartCoroutine(Wait());
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (GameObject.FindGameObjectWithTag("Player") != null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        //player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
 

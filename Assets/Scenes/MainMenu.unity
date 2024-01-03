@@ -761,6 +761,8 @@ MonoBehaviour:
   lives: 0
   livesText: {fileID: 732986491}
   levelText: {fileID: 492086275}
+  goldText: {fileID: 161835523}
+  gemText: {fileID: 2109093211}
   health: 500
   maxHealth: 500
   mana: 100
@@ -786,7 +788,11 @@ MonoBehaviour:
   currentPlayer: 0
   enemyTag: Enemy
   knockDamage: 10
-  avatarList: []
+  avatarList:
+  - {fileID: 2015789163}
+  - {fileID: 2015789163}
+  - {fileID: 2015789163}
+  - {fileID: 2015789163}
 --- !u!4 &164140117
 Transform:
   m_ObjectHideFlags: 0
@@ -2831,7 +2837,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Floor: 1'
+  m_text: 'Floor:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3928,6 +3934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
