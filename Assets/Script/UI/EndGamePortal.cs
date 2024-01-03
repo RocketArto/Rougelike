@@ -29,6 +29,8 @@ public class EndGamePortal : MonoBehaviour
         PlayerPrefs.SetInt("lives", PlayerStats.Instance.lives);
         PlayerPrefs.SetInt("CurrentLevel", currentLevel);
         PlayerPrefs.SetInt("CurrentPlayer", PlayerStats.Instance.currentPlayer);
-        SceneManager.LoadSceneAsync(0);
+        PlayerPrefs.SetInt("GoldValue", PlayerStats.Instance.coin);
+        PlayerPrefs.SetInt("GemValue", PlayerStats.Instance.gem);
+        IngameUI.Instance.FloorCleared();
     }
 }

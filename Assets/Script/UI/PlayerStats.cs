@@ -41,7 +41,7 @@ public class PlayerStats : MonoBehaviour
     public Image manaBarSlider;
 
     public Image[] skillSlider;
-    public bool isRecharge;
+    public bool[] isRecharge;
 
     public int coin;
     public int gem;
@@ -49,6 +49,8 @@ public class PlayerStats : MonoBehaviour
 
     //PlayerList
     public SpawnManagerScriptableObject spawnList;
+    //AvatarList
+    public ImageSourceListScriptableObject imageSource;
 
     public GameObject respawn;
     public GameObject spawnPoint;
@@ -56,6 +58,7 @@ public class PlayerStats : MonoBehaviour
 
     public string enemyTag = "Enemy";
     public float knockDamage = 100f;
+    public bool isIngame;
 
     
 
@@ -66,6 +69,8 @@ public class PlayerStats : MonoBehaviour
         Instance = this;
         level = PlayerPrefs.GetInt("CurrentLevel");
         lives = PlayerPrefs.GetInt("lives");
+        coin = PlayerPrefs.GetInt("GoldValue");
+        gem = PlayerPrefs.GetInt("GemValue");
         if (lives == 0)
         {
             lives = 1;
@@ -79,9 +84,10 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
+        isRecharge = new bool[] { false, false, false };
         levelText.text = "Floor: " + (level + 1);
-        goldText.text = "" + PlayerPrefs.GetInt("goldValue");
-        gemText.text = "" + PlayerPrefs.GetInt("gemValue");
+        //goldText.text = "" + PlayerPrefs.GetInt("goldValue");
+        //gemText.text = "" + PlayerPrefs.GetInt("gemValue");
         skillSlider[0].fillAmount = 0;
         skillSlider[1].fillAmount = 0;
         skillSlider[2].fillAmount = 0;
@@ -109,38 +115,35 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        goldText.text = "" + coin;
+        gemText.text = "" + gem;
         p1 = GameObject.FindGameObjectWithTag("Player");
         TakeInput();
     }
 
     public void TakeInput()
     {
-        if ( Input.GetKeyDown("1") && isRecharge == false)
+        if ( Input.GetKeyDown("1") && isRecharge[0] == false)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                skillSlider[i].fillAmount = 1;
-                isRecharge = true;
-                StartCoroutine(SkillRecharge());
-            }
+            skillSlider[0].fillAmount = 1;
+            isRecharge[0] = true;
+            StartCoroutine(SkillRecharge(0));
         }
-        else if (Input.GetKeyDown("2") && isRecharge == false)
+        else if (Input.GetKeyDown("2") && isRecharge[1] == false)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                skillSlider[i].fillAmount = 1;
-                isRecharge = true;
-                StartCoroutine(SkillRecharge());
-            }
+            skillSlider[1].fillAmount = 1;
+            isRecharge[1] = true;
+            StartCoroutine(SkillRecharge(1));
         }
-        else if (Input.GetKeyDown("3") && isRecharge == false)
+        else if (Input.GetKeyDown("3") && isRecharge[2] == false)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                skillSlider[i].fillAmount = 1;
-                isRecharge = true;
-                StartCoroutine(SkillRecharge());
-            }
+            skillSlider[2].fillAmount = 1;
+            isRecharge[2] = true;
+            StartCoroutine(SkillRecharge(2));
+        }
+        if (Input.GetKeyDown(KeyCode.Escape)&&isIngame)
+        {
+            IngameUI.Instance.PauseGame();
         }
     }
 
@@ -182,12 +185,16 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             lives -= 1;
+            livesText.text = "Lives: " + PlayerStats.Instance.lives;
             if (lives <= 0)
             {
-                SceneManager.LoadSceneAsync(0);
+                IngameUI.Instance.FloorFailed();
+                //SceneManager.LoadSceneAsync(0);
             }
-            livesText.text = "Lives: " + PlayerStats.Instance.lives;
-            ChangePlayer();
+            else
+            {
+                ChangePlayer();
+            }
         }
     }
 
@@ -286,11 +293,40 @@ public class PlayerStats : MonoBehaviour
 
     public void SetAvatar()
     {
-        foreach (Image avatar in avatarList)
+        skillSlider[0].fillAmount = 0;
+        skillSlider[1].fillAmount = 0;
+        skillSlider[2].fillAmount = 0;
+        avatarList[1].GetComponent<Image>().sprite = null;
+        avatarList[2].GetComponent<Image>().sprite = null;
+        avatarList[3].GetComponent<Image>().sprite = null;
+        int count = 0;
+        avatarList[0].GetComponent<Image>().sprite = imageSource.spriteList[currentPlayer];
+        count++;
+        if (count < lives)
         {
-            avatar.gameObject.SetActive(false);
+            int index1 = currentPlayer - 1;
+            if (index1 < 0) index1 += 4;
+            avatarList[1].GetComponent<Image>().sprite = imageSource.spriteList[index1];
+            count++;
+            if (count < lives)
+            {
+                int index2 = currentPlayer - 2;
+                if (index2 < 0) index2 += 4;
+                avatarList[2].GetComponent<Image>().sprite = imageSource.spriteList[index2];
+                count++;
+                if(count < lives)
+                {
+                    int index3 = currentPlayer - 3;
+                    if (index3 < 0) index3 += 4;
+                    avatarList[3].GetComponent<Image>().sprite = imageSource.spriteList[index3];
+                }
+            }
         }
-        avatarList[currentPlayer].gameObject.SetActive(true);
+        //foreach (Image avatar in avatarList)
+        //{
+        //    avatar.gameObject.SetActive(false);
+        //}
+        //avatarList[currentPlayer].gameObject.SetActive(true);
     }
 
 
@@ -319,23 +355,18 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    IEnumerator SkillRecharge()
+    IEnumerator SkillRecharge(int target)
     {
         float elapsedTime = 0;
         float rechargeTime = 10f;
         while (elapsedTime <= rechargeTime)
         {
             elapsedTime += Time.deltaTime;
-            skillSlider[0].fillAmount = (1f - elapsedTime / rechargeTime);
-            skillSlider[1].fillAmount = (1f - elapsedTime / rechargeTime);
-            skillSlider[2].fillAmount = (1f - elapsedTime / rechargeTime);
+            skillSlider[target].fillAmount = (1f - elapsedTime / rechargeTime);
             yield return null;
         }
-        for (int i = 0; i < 3; i++)
-        {
-            skillSlider[i].fillAmount = 0;
-        }
-        isRecharge = false;
+        skillSlider[target].fillAmount = 0;
+        isRecharge[target] = false;
     }
 
     private float CaculateManaPercentage()
