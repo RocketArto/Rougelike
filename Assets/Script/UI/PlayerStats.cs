@@ -11,6 +11,7 @@ using TMPro;
 using DamageNumbersPro;
 using System.Timers;
 using static UnityEngine.EventSystems.EventTrigger;
+using Random = UnityEngine.Random;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -42,6 +43,8 @@ public class PlayerStats : MonoBehaviour
 
     public Image[] skillSlider;
     public bool[] isRecharge;
+    public GameObject[] skills;
+    Coroutine[] coroutines = new Coroutine[] {null,null,null};
 
     public int coin;
     public int gem;
@@ -49,11 +52,14 @@ public class PlayerStats : MonoBehaviour
 
     //PlayerList
     public SpawnManagerScriptableObject spawnList;
+    //SkillList
+    public SpawnManagerScriptableObject skillList;
     //AvatarList
     public ImageSourceListScriptableObject imageSource;
 
     public GameObject respawn;
     public GameObject spawnPoint;
+    public GameObject tomb;
     public int currentPlayer;
 
     public string enemyTag = "Enemy";
@@ -125,28 +131,48 @@ public class PlayerStats : MonoBehaviour
     {
         if ( Input.GetKeyDown("1") && isRecharge[0] == false)
         {
-            skillSlider[0].fillAmount = 1;
-            isRecharge[0] = true;
-            StartCoroutine(SkillRecharge(0));
+            if ((skills[0] != null)&&(isIngame==true))
+            {
+                Vector2 offset = new Vector2(Random.Range(-10,10), Random.Range(-10, 10));
+                offset = offset.normalized * 0.7f;
+                Vector2 playerPos = p1.transform.position;
+                GameObject skill_1 = Instantiate(skills[0],playerPos+offset,Quaternion.identity);
+                skill_1.GetComponent<SkillStats>().skillIndex = 0;
+                skillSlider[0].fillAmount = 1;
+                isRecharge[0] = true;
+            }
         }
         else if (Input.GetKeyDown("2") && isRecharge[1] == false)
         {
-            skillSlider[1].fillAmount = 1;
-            isRecharge[1] = true;
-            StartCoroutine(SkillRecharge(1));
+            if ((skills[1] != null) && (isIngame == true))
+            {
+                Vector2 offset = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10));
+                offset = offset.normalized * 0.7f;
+                Vector2 playerPos = p1.transform.position;
+                GameObject skill_2 = Instantiate(skills[1], playerPos + offset, Quaternion.identity);
+                skill_2.GetComponent<SkillStats>().skillIndex = 1;
+                skillSlider[1].fillAmount = 1;
+                isRecharge[1] = true;
+            }
         }
         else if (Input.GetKeyDown("3") && isRecharge[2] == false)
         {
-            skillSlider[2].fillAmount = 1;
-            isRecharge[2] = true;
-            StartCoroutine(SkillRecharge(2));
+            if ((skills[2] != null) && (isIngame == true))
+                {
+                Vector2 offset = new Vector2(Random.Range(-10, 10), Random.Range(-10, 10));
+                offset = offset.normalized * 0.7f;
+                Vector2 playerPos = p1.transform.position;
+                GameObject skill_3 = Instantiate(skills[2], playerPos + offset, Quaternion.identity);
+                skill_3.GetComponent<SkillStats>().skillIndex = 2;
+                skillSlider[2].fillAmount = 1;
+                isRecharge[2] = true;
+            }
         }
         if (Input.GetKeyDown(KeyCode.Escape)&&isIngame)
         {
             IngameUI.Instance.PauseGame();
         }
     }
-
 
     //quan ly HP
     public void DealDamage(float damage)
@@ -171,7 +197,6 @@ public class PlayerStats : MonoBehaviour
         healthBarSlider.fillAmount = CaculateHealthPercentage();
     }
 
-
     public void CheckOverheal()
     {
         if (health > maxHealth)
@@ -188,14 +213,21 @@ public class PlayerStats : MonoBehaviour
             livesText.text = "Lives: " + PlayerStats.Instance.lives;
             if (lives <= 0)
             {
-                IngameUI.Instance.FloorFailed();
+                GameObject spawnTomb = Instantiate(tomb,p1.transform.position,Quaternion.identity);
+                p1.SetActive(false);
+                Invoke("EndGamePanelOpen", 3f);
                 //SceneManager.LoadSceneAsync(0);
             }
             else
             {
-                ChangePlayer();
+                ChangeBackPlayer();
             }
         }
+    }
+
+    private void EndGamePanelOpen()
+    {
+        IngameUI.Instance.FloorFailed();
     }
 
     //Quan ly Mana
@@ -212,16 +244,12 @@ public class PlayerStats : MonoBehaviour
         manaBarSlider.fillAmount = CaculateManaPercentage();
     }
 
-
-
     public void HealCharacterMana(float rev)
     {
         mana += rev;
         CheckOverhealMana();
         manaBarSlider.fillAmount = CaculateManaPercentage();
     }
-
-
 
     public void CheckOverhealMana()
     {
@@ -230,10 +258,6 @@ public class PlayerStats : MonoBehaviour
             mana = maxMana;
         }
     }
-
-
-    
-
 
     //Recover Mana
 
@@ -253,6 +277,22 @@ public class PlayerStats : MonoBehaviour
     public void ChangePlayer()
     {
         currentPlayer = (currentPlayer + 1) % (spawnList.spawnList.Length);
+        Vector2 currLocation = p1.transform.position;
+        Destroy(p1);
+        GameObject spawnEffect = Instantiate(respawn, currLocation, Quaternion.identity);
+        GameObject spawnPlayer = Instantiate(spawnList.spawnList[currentPlayer], currLocation, Quaternion.identity);
+        p1 = spawnPlayer;
+        CameraFollowPlayer.Instance.player = p1.transform;
+        PlayerInitialized();
+    }
+
+    public void ChangeBackPlayer()
+    {
+        currentPlayer = currentPlayer - 1;
+        if (currentPlayer < 0)
+        {
+            currentPlayer += spawnList.spawnList.Length;
+        }
         Debug.Log(currentPlayer);
         Vector2 currLocation = p1.transform.position;
         Destroy(p1);
@@ -296,6 +336,8 @@ public class PlayerStats : MonoBehaviour
         skillSlider[0].fillAmount = 0;
         skillSlider[1].fillAmount = 0;
         skillSlider[2].fillAmount = 0;
+        skills = new GameObject[] { null, null, null };
+        isRecharge = new bool[] { false,false,false };
         avatarList[1].GetComponent<Image>().sprite = null;
         avatarList[2].GetComponent<Image>().sprite = null;
         avatarList[3].GetComponent<Image>().sprite = null;
@@ -304,29 +346,39 @@ public class PlayerStats : MonoBehaviour
         count++;
         if (count < lives)
         {
+            if (coroutines[0] != null)
+            {
+                StopCoroutine(coroutines[0]);
+            }
             int index1 = currentPlayer - 1;
             if (index1 < 0) index1 += 4;
             avatarList[1].GetComponent<Image>().sprite = imageSource.spriteList[index1];
+            skills[0] = skillList.spawnList[index1];
             count++;
             if (count < lives)
             {
+                if (coroutines[1] != null)
+                {
+                    StopCoroutine(coroutines[1]);
+                }
                 int index2 = currentPlayer - 2;
                 if (index2 < 0) index2 += 4;
                 avatarList[2].GetComponent<Image>().sprite = imageSource.spriteList[index2];
+                skills[1] = skillList.spawnList[index2];
                 count++;
                 if(count < lives)
                 {
+                    if (coroutines[2] != null)
+                    {
+                        StopCoroutine(coroutines[2]);
+                    }
                     int index3 = currentPlayer - 3;
                     if (index3 < 0) index3 += 4;
                     avatarList[3].GetComponent<Image>().sprite = imageSource.spriteList[index3];
+                    skills[2] = skillList.spawnList[index3];
                 }
             }
         }
-        //foreach (Image avatar in avatarList)
-        //{
-        //    avatar.gameObject.SetActive(false);
-        //}
-        //avatarList[currentPlayer].gameObject.SetActive(true);
     }
 
 
@@ -355,10 +407,14 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    IEnumerator SkillRecharge(int target)
+    public void rechargeSkill(int target, float rechargeTime)
+    {
+        coroutines[target] = StartCoroutine(SkillRecharge(target,rechargeTime));
+    }
+
+    public IEnumerator SkillRecharge(int target,float rechargeTime)
     {
         float elapsedTime = 0;
-        float rechargeTime = 10f;
         while (elapsedTime <= rechargeTime)
         {
             elapsedTime += Time.deltaTime;

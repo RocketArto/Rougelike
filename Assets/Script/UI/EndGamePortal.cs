@@ -20,7 +20,11 @@ public class EndGamePortal : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        EndGame();
+        if (collision.tag == "Player")
+        {
+            Invoke("EndGame", 0.1f);
+        }
+            
     }
 
     private void EndGame()

@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 168160481}
   - component: {fileID: 168160482}
   m_Layer: 5
-  m_Name: StatusGroup
+  m_Name: StatusPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3555,6 +3555,7 @@ GameObject:
   - component: {fileID: 1004653139}
   - component: {fileID: 1004653138}
   - component: {fileID: 1004653141}
+  - component: {fileID: 1004653142}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3620,7 +3621,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004653137}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
@@ -3643,6 +3644,164 @@ MonoBehaviour:
   player: {fileID: 0}
   smoothing: 0.05
   offset: {x: 0, y: 0, z: -1}
+--- !u!114 &1004653142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004653137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd8b67ec672b024796a56bd11ceaec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camShakeY:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.4
+      inSlope: 1.4014404
+      outSlope: 1.4014404
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: -0.3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.2
+      inSlope: 0.5584908
+      outSlope: 0.5584908
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: -0.1
+      inSlope: -1.044721
+      outSlope: -1.044721
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0.6261075
+      outSlope: 0.6261075
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  camShakeX:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: -0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0.4
+      inSlope: 1.3646216
+      outSlope: 1.3646216
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: -0.3
+      inSlope: -1.7265352
+      outSlope: -1.7265352
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.2
+      inSlope: 0.22165698
+      outSlope: 0.22165698
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: -0.1
+      inSlope: 1.0604813
+      outSlope: 1.0604813
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  camShakeZ:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  multiplier: 1
+  randomize: 1
 --- !u!1 &1011240327
 GameObject:
   m_ObjectHideFlags: 0
@@ -4910,14 +5069,17 @@ MonoBehaviour:
   - {fileID: 1127071524}
   - {fileID: 508813183}
   - {fileID: 1962539890}
-  isRecharge: 0
+  isRecharge: 
+  skills: []
   coin: 0
   gem: 0
   iframe: 0
   spawnList: {fileID: 11400000, guid: 01dfc5a4c520efa44b14deb7b48193e3, type: 2}
+  skillList: {fileID: 11400000, guid: 6c4c9405be3f3b8469afb9f877d759d4, type: 2}
   imageSource: {fileID: 11400000, guid: 21a5a544ddc246d4eadf2a9b2ba5c2df, type: 2}
   respawn: {fileID: 2790842631546169333, guid: 0645dd2ad7099e94ab3ae938a2f7b302, type: 3}
   spawnPoint: {fileID: 0}
+  tomb: {fileID: 4559322940075811706, guid: 65a0d4e2b347ac049aa785bec1c333e8, type: 3}
   currentPlayer: 0
   enemyTag: Enemy
   knockDamage: 10
