@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject choosePlayerPanel;
     public GameObject settingsPanel;
+    public GameObject loadingPanel;
 
     public GameObject continueButton;
 
@@ -22,7 +23,6 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadSceneAsync(1);
-        //SceneManager.LoadScene(1);
     }
 
     public void NewGame() {
@@ -37,9 +37,7 @@ public class MainMenu : MonoBehaviour
 
     public void ClosePlayerPanel()
     {
-        //choosePlayerPanel.SetActive(false);
         SceneManager.LoadSceneAsync(1);
-        //CameraFollowPlayer.Instance.player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public void OpenSettings()

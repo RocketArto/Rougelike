@@ -10,6 +10,7 @@ public class IngameUI : MonoBehaviour
 {
     public static IngameUI Instance;
 
+    public GameObject loadingPanel;
     public GameObject pausePanel;
     public GameObject floorClearedPanel;
     public GameObject floorFailedPanel;
@@ -54,11 +55,14 @@ public class IngameUI : MonoBehaviour
     public void FloorCleared()
     {
         Time.timeScale = 0;
-        floorClearedPanel.SetActive(true);
+        loadingPanel.SetActive(true);
+        //floorClearedPanel.SetActive(true);
+        ReturnWin();
     }
 
     public void ReturnWin()
     {
+        //loadingPanel.SetActive(true);
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync(0);
     }
