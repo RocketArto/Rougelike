@@ -82,31 +82,6 @@ public class NewMovement : MonoBehaviour
         }
         else isDash = false;
 
-
-        //if( Input.GetKeyDown(KeyCode.Space)&&count<=0) 
-        //{ 
-        //    Vector2 targetPos = transform.position;
-        //    if (faceDir == FaceDir.UP) {
-        //        targetPos.y += dashRange;
-        //    }
-        //    else if (faceDir == FaceDir.DOWN)
-        //    {
-        //        targetPos.y -= dashRange;
-        //    }
-        //    else if (faceDir == FaceDir.RIGHT) { 
-        //        targetPos.x += dashRange;
-        //    }
-        //    else if (faceDir == FaceDir.LEFT)
-        //    {
-        //        targetPos.x -= dashRange;
-        //    }
-        //    transform.position= targetPos;
-        //    count = dashDelay;
-        //}
-        //else
-        //{
-        //    count -= Time.deltaTime;
-        //}
     }
 
     private void SetAnimatorMovement(Vector2 direction){

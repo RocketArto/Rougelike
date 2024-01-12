@@ -52,22 +52,6 @@ public class CitizenInteract : MonoBehaviour
 
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Player"))
-    //    {
-    //        interactable = true;
-    //    }
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("Player") == false)
-    //    {
-    //        interactable = false;
-    //    }
-    //}
-
     void PauseGame()
     {
         Time.timeScale = 0;

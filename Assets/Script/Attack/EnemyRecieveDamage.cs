@@ -17,9 +17,6 @@ public class EnemyRecieveDamage : MonoBehaviour
     public UnityEngine.UI.Slider healthBarSlider;
 
     public GameObject lootDrop;
-
-    //public float throwForce = 1f;
-    //public float dampingFactor = 0.97f;
     public float lifetime = 0.2f;
 
     public float slowDownTime = 1f;
